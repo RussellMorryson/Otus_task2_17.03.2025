@@ -4,9 +4,9 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include "ip_functions.cpp"
+#include "ip_functions.h"
 
-int main(int argc, char const *argv[]) {
+int main(int, char **) {
     try {
         std::vector<std::vector<std::string> > ip_pool;
         std::ifstream file;

@@ -16,7 +16,7 @@ void sort_desc(std::vector<std::vector<std::string> > &ip_pool);
 void print_ip_v4(std::vector<std::string> &ip_v4, int &num);
 
 // Поиск ip адреса по маске
-void filter(std::vector<std::vector<std::string> > &ip_pool, int a1, int a2, int a3, int a4);  
+void filter(std::vector<std::vector<std::string> > &ip_pool, int a1=0, int a2=0, int a3=0, int a4=0);  
 
 // Поиск ip адреса по числу
-void filter_any(std::vector<std::vector<std::string> > &ip_pool, int a) ;
+void filter_any(std::vector<std::vector<std::string> > &ip_pool, int a=0) ;
