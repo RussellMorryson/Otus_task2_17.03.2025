@@ -119,7 +119,7 @@ void print_ip_v4(std::vector<std::string> &ip_v4, int &num) {
 }
 
 // Поиск ip адреса по маске
-void filter(std::vector<std::vector<std::string> > &ip_pool, int a1 = 0, int a2 = 0, int a3 = 0, int a4 = 0) {    
+void filter(std::vector<std::vector<std::string> > &ip_pool, int a1, int a2 = 0, int a3 = 0, int a4 = 0) {    
     std::cout << "\n*** FILTER FUNCTION ***\n";
     std::cout << "Find ip of: " << a1 << '.' << a2 << '.' << a3 << '.' << a4 << std::endl;
     int size = ip_pool.size();
