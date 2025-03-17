@@ -3,6 +3,9 @@
 #include <string>
 #include <vector>
 
+// Проверка версии (отработка автотеста)
+int version();
+
 // Запись ip адреса в отдельный вектор
 std::vector<std::string> split(const std::string &str, char d);
 

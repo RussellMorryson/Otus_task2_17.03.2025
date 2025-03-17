@@ -6,6 +6,12 @@
 #include <fstream>
 #include "ip_functions.h"
 
+#include "version.h"
+
+int version() {
+	return PROJECT_VERSION_PATCH;
+}
+
 // ("",  '.') -> [""]
 // ("11", '.') -> ["11"]
 // ("..", '.') -> ["", "", ""]
