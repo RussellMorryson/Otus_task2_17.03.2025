@@ -5,12 +5,12 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project(ip_v4 VERSION ${PROJECT_VESRION})
 
-#option(WITH_BOOST_TEST "Whether to build Boost test" ON)
+option(WITH_BOOST_TEST "Whether to build Boost test" ON)
 
 configure_file(version.h.in version.h)
 
-add_executable(ip_v4 main.cpp)
-add_library(ip_v4_cli ip_functions.cpp)
+add_executable(ip_v4_cli main.cpp)
+add_library(ip_v4 ip_functions.cpp)
 
 set_target_properties(ip_v4_cli ip_v4 PROPERTIES
     CXX_STANDARD 14
