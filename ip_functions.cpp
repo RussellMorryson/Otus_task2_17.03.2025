@@ -4,8 +4,9 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include "ip_functions.h"
+#include <array>
 
+#include "ip_functions.h"
 #include "version.h"
 
 int version() {
@@ -34,35 +35,35 @@ std::vector<std::string> split(const std::string &str, char d) {
 }
 
 // Сортировка по возрастанию
-void sort_asc(std::vector<std::vector<std::string> > &ip_pool) {
-    std::vector<std::string> temp; // временная табица
+void sort_asc(std::vector<std::array<int, 4> > &ip_pool) {
+    std::array<int, 4> temp; // временная табица
     int size = ip_pool.size();
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
             if (i != j){
-                if (stoi(ip_pool[i][0]) < stoi(ip_pool[j][0])) {
+                if (ip_pool[i][0] < ip_pool[j][0]) {
                     temp = ip_pool[i];
                     ip_pool[i] = ip_pool[j];
                     ip_pool[j] = temp;
-                    temp.clear();
-                } else if (stoi(ip_pool[i][0]) == stoi(ip_pool[j][0])) {
-                    if (stoi(ip_pool[i][1]) < stoi(ip_pool[j][1])) {
+                    temp.empty();
+                } else if (ip_pool[i][0] == ip_pool[j][0]) {
+                    if (ip_pool[i][1] < ip_pool[j][1]) {
                         temp = ip_pool[i];
                         ip_pool[i] = ip_pool[j];
                         ip_pool[j] = temp;
-                        temp.clear();
-                    } else if (stoi(ip_pool[i][1]) == stoi(ip_pool[j][1])) {
-                        if (stoi(ip_pool[i][2]) < stoi(ip_pool[j][2])) {
+                        temp.empty();
+                    } else if (ip_pool[i][1] == ip_pool[j][1]) {
+                        if (ip_pool[i][2] < ip_pool[j][2]) {
                             temp = ip_pool[i];
                             ip_pool[i] = ip_pool[j];
                             ip_pool[j] = temp;
-                            temp.clear();
-                        } else if (stoi(ip_pool[i][2]) == stoi(ip_pool[j][2])) {
-                            if (stoi(ip_pool[i][3]) < stoi(ip_pool[j][3])) {
+                            temp.empty();
+                        } else if (ip_pool[i][2] == ip_pool[j][2]) {
+                            if (ip_pool[i][3] < ip_pool[j][3]) {
                                 temp = ip_pool[i];
                                 ip_pool[i] = ip_pool[j];
                                 ip_pool[j] = temp;
-                                temp.clear();
+                                temp.empty();
                             }
                         }
                     }
@@ -73,35 +74,35 @@ void sort_asc(std::vector<std::vector<std::string> > &ip_pool) {
 }
 
 // Сортировка по убыванию
-void sort_desc(std::vector<std::vector<std::string> > &ip_pool) {
-    std::vector<std::string> temp; // временная табица
+void sort_desc(std::vector<std::array<int, 4> > &ip_pool) {
+    std::array<int, 4> temp; // временная табица
     int size = ip_pool.size();
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
             if (i != j){
-                if (stoi(ip_pool[i][0]) > stoi(ip_pool[j][0])) {
+                if (ip_pool[i][0] > ip_pool[j][0]) {
                     temp = ip_pool[i];
                     ip_pool[i] = ip_pool[j];
                     ip_pool[j] = temp;
-                    temp.clear();
-                } else if (stoi(ip_pool[i][0]) == stoi(ip_pool[j][0])) {
-                    if (stoi(ip_pool[i][1]) > stoi(ip_pool[j][1])) {
+                    temp.empty();
+                } else if (ip_pool[i][0] == ip_pool[j][0]) {
+                    if (ip_pool[i][1] > ip_pool[j][1]) {
                         temp = ip_pool[i];
                         ip_pool[i] = ip_pool[j];
                         ip_pool[j] = temp;
-                        temp.clear();
-                    } else if (stoi(ip_pool[i][1]) == stoi(ip_pool[j][1])) {
-                        if (stoi(ip_pool[i][2]) > stoi(ip_pool[j][2])) {
+                        temp.empty();
+                    } else if (ip_pool[i][1] == ip_pool[j][1]) {
+                        if (ip_pool[i][2] > ip_pool[j][2]) {
                             temp = ip_pool[i];
                             ip_pool[i] = ip_pool[j];
                             ip_pool[j] = temp;
-                            temp.clear();
-                        } else if (stoi(ip_pool[i][2]) == stoi(ip_pool[j][2])) {
-                            if (stoi(ip_pool[i][3]) > stoi(ip_pool[j][3])) {
+                            temp.empty();
+                        } else if (ip_pool[i][2] == ip_pool[j][2]) {
+                            if (ip_pool[i][3] > ip_pool[j][3]) {
                                 temp = ip_pool[i];
                                 ip_pool[i] = ip_pool[j];
                                 ip_pool[j] = temp;
-                                temp.clear();
+                                temp.empty();
                             }
                         }
                     }
@@ -112,7 +113,7 @@ void sort_desc(std::vector<std::vector<std::string> > &ip_pool) {
 }
 
 // Вывод на экран ip адреса
-void print_ip_v4(std::vector<std::string> &ip_v4, int &num) {
+void print_ip_v4(std::array<int, 4> &ip_v4, int &num) {
     std::cout << num << ") ";
     int size = ip_v4.size();
     for(int y = 0; y < size; y++) {
@@ -125,37 +126,37 @@ void print_ip_v4(std::vector<std::string> &ip_v4, int &num) {
 }
 
 // Поиск ip адреса по маске
-void filter(std::vector<std::vector<std::string> > &ip_pool, int a1, int a2, int a3, int a4) {    
+void filter(std::vector<std::array<int, 4> > &ip_pool, int a1, int a2, int a3, int a4) {    
     std::cout << "\n*** FILTER FUNCTION ***\n";
     std::cout << "Find ip of: " << a1 << '.' << a2 << '.' << a3 << '.' << a4 << std::endl;
     int size = ip_pool.size();
     if (a1 != 0 && a2 == 0 && a3 == 0 && a4 == 0) {
         for(int i = 0; i < size; i++) {
-            if (ip_pool[i][0] == std::to_string(a1)) {
+            if (ip_pool[i][0] == a1) {
                 print_ip_v4(ip_pool[i], i);
             }
-        }            
+        }
     } else if (a1 != 0 && a2 != 0 && a3 == 0 && a4 == 0) {
         for(int i = 0; i < size; i++) {
-            if (ip_pool[i][0] == std::to_string(a1) 
-            && ip_pool[i][1] == std::to_string(a2)) {
+            if (ip_pool[i][0] == a1 
+            && ip_pool[i][1] == a2) {
                 print_ip_v4(ip_pool[i], i);
             }
         }  
     } else if (a1 != 0 && a2 != 0 && a3 != 0 && a4 == 0) {
         for(int i = 0; i < size; i++) {
-            if (ip_pool[i][0] == std::to_string(a1) 
-            && ip_pool[i][1] == std::to_string(a2) 
-            && ip_pool[i][2] == std::to_string(a3)) {
+            if (ip_pool[i][0] == a1 
+            && ip_pool[i][1] == a2 
+            && ip_pool[i][2] == a3) {
                 print_ip_v4(ip_pool[i], i);
             }
         }  
     } else if (a1 != 0 && a2 != 0 && a3 != 0 && a4 != 0) {
         for(int i = 0; i < size; i++) {
-            if (ip_pool[i][0] == std::to_string(a1) 
-            && ip_pool[i][1] == std::to_string(a2) 
-            && ip_pool[i][2] == std::to_string(a3)
-            && ip_pool[i][3] == std::to_string(a4)) {
+            if (ip_pool[i][0] == a1 
+            && ip_pool[i][1] == a2 
+            && ip_pool[i][2] == a3
+            && ip_pool[i][3] == a4) {
                 print_ip_v4(ip_pool[i], i);
             }
         } 
@@ -163,16 +164,16 @@ void filter(std::vector<std::vector<std::string> > &ip_pool, int a1, int a2, int
 }
 
 // Поиск ip адреса по числу
-void filter_any(std::vector<std::vector<std::string> > &ip_pool, int a) {
+void filter_any(std::vector<std::array<int, 4> > &ip_pool, int a) {
     std::cout << "\n*** FILTER FUNCTION ***\n";
     std::cout << "Find in ip of: " << a << std::endl;    
     int size = ip_pool.size();
     for(int i = 0; i < size; i++) {
-        if (ip_pool[i][0] == std::to_string(a) 
-        || ip_pool[i][1] == std::to_string(a) 
-        || ip_pool[i][2] == std::to_string(a) 
-        || ip_pool[i][3] == std::to_string(a)) {
+        if (ip_pool[i][0] == a 
+        || ip_pool[i][1] == a 
+        || ip_pool[i][2] == a 
+        || ip_pool[i][3] == a) {
             print_ip_v4(ip_pool[i], i);
         }
-    }            
+    }
 }

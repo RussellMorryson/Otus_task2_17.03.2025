@@ -4,23 +4,32 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <array>
+
 #include "ip_functions.h"
 
 int main(int, char **) {
     try {
-        std::vector<std::vector<std::string> > ip_pool;
+        std::vector<std::array<int, 4> > ip_pool;
         std::ifstream file;
         file.open("ip_filter.tsv");
         
         // Решил прочитать ip адреса из приложеного файла
         std::string line;
+        std::vector<std::string> str_nums;
+        std::array<int, 4> int_nums;
         if (file.is_open()) {
-            while(getline(file, line)){                 
-                std::vector<std::string> v = split(line, '\t');
-                ip_pool.push_back(split(v.at(0), '.'));
+            while(getline(file, line)){
+                str_nums = split(line, '\t');   
+                str_nums = split(str_nums.at(0), '.');
+                for(int i = 0; i < str_nums.size(); i++) {
+                    int_nums[i] = std::stoi(str_nums[i]);
+                }
+                str_nums.clear();
+                ip_pool.push_back(int_nums);
             }
         } else {
-            printf("%s", "File not found!");
+            std::cout << "File not found!" << std::endl;
         }
         file.close(); 
 
@@ -38,8 +47,8 @@ int main(int, char **) {
         sort_desc(ip_pool); // По убыванию
 
         // Вывод в консоль
-        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip) {
-            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part) {
+        for(std::vector<std::array<int, 4 >>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip) {
+            for(std::array<int, 4>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part) {
                 if (ip_part != ip->cbegin()) { 
                     std::cout << "."; 
                 }
