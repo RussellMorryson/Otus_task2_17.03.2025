@@ -22,7 +22,7 @@ int main(int, char **) {
             while(getline(file, line)){
                 str_nums = split(line, '\t');   
                 str_nums = split(str_nums.at(0), '.');
-                for(int i = 0; i < str_nums.size(); i++) {
+                for(int i = 0; i < 4; i++) {
                     int_nums[i] = std::stoi(str_nums[i]);
                 }
                 str_nums.clear();
