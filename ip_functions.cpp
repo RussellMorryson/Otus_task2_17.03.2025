@@ -44,26 +44,22 @@ void sort_asc(std::vector<std::array<int, 4> > &ip_pool) {
                 if (ip_pool[i][0] < ip_pool[j][0]) {
                     temp = ip_pool[i];
                     ip_pool[i] = ip_pool[j];
-                    ip_pool[j] = temp;
-                    temp.empty();
+                    ip_pool[j] = temp;                    
                 } else if (ip_pool[i][0] == ip_pool[j][0]) {
                     if (ip_pool[i][1] < ip_pool[j][1]) {
                         temp = ip_pool[i];
                         ip_pool[i] = ip_pool[j];
-                        ip_pool[j] = temp;
-                        temp.empty();
+                        ip_pool[j] = temp;                        
                     } else if (ip_pool[i][1] == ip_pool[j][1]) {
                         if (ip_pool[i][2] < ip_pool[j][2]) {
                             temp = ip_pool[i];
                             ip_pool[i] = ip_pool[j];
-                            ip_pool[j] = temp;
-                            temp.empty();
+                            ip_pool[j] = temp;                            
                         } else if (ip_pool[i][2] == ip_pool[j][2]) {
                             if (ip_pool[i][3] < ip_pool[j][3]) {
                                 temp = ip_pool[i];
                                 ip_pool[i] = ip_pool[j];
                                 ip_pool[j] = temp;
-                                temp.empty();
                             }
                         }
                     }
@@ -83,26 +79,22 @@ void sort_desc(std::vector<std::array<int, 4> > &ip_pool) {
                 if (ip_pool[i][0] > ip_pool[j][0]) {
                     temp = ip_pool[i];
                     ip_pool[i] = ip_pool[j];
-                    ip_pool[j] = temp;
-                    temp.empty();
+                    ip_pool[j] = temp;                   
                 } else if (ip_pool[i][0] == ip_pool[j][0]) {
                     if (ip_pool[i][1] > ip_pool[j][1]) {
                         temp = ip_pool[i];
                         ip_pool[i] = ip_pool[j];
-                        ip_pool[j] = temp;
-                        temp.empty();
+                        ip_pool[j] = temp;                        
                     } else if (ip_pool[i][1] == ip_pool[j][1]) {
                         if (ip_pool[i][2] > ip_pool[j][2]) {
                             temp = ip_pool[i];
                             ip_pool[i] = ip_pool[j];
-                            ip_pool[j] = temp;
-                            temp.empty();
+                            ip_pool[j] = temp;                            
                         } else if (ip_pool[i][2] == ip_pool[j][2]) {
                             if (ip_pool[i][3] > ip_pool[j][3]) {
                                 temp = ip_pool[i];
                                 ip_pool[i] = ip_pool[j];
-                                ip_pool[j] = temp;
-                                temp.empty();
+                                ip_pool[j] = temp;                                
                             }
                         }
                     }
